@@ -97,7 +97,10 @@ const Product = cms.registerSchema({
                 type: 'image', controller: function ($scope) {
                     $scope.w = '500';
                     $scope.$watch(['model.name', 'model.picture'], function () {
-                        $scope.filename = `${$scope.model.name.split(' ').join('_')}.${$scope.model.picture.split('.').pop()}`;
+                        try {
+                            $scope.filename = `${$scope.model.name.split(' ').join('_')}.${$scope.model.picture.split('.').pop()}`;
+                        } catch (e) {
+                        }
                     }, true);
                 }
             }, label: 'Bild'
